@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite errors="1" failures="2" hostname="Alberts-Mac-mini.local" name="my_pytest_example" skipped="3" tests="12" time="0.087" timestamp="2021-11-07T20:57:15.876453"><testcase classname="test_assert1" name="test_function" time="0.001"><failure message="AssertionError: result should be 3&#10;assert 3 == 4&#10;  +3&#10;  -4">def test_function():
+&gt;       assert f() == 4, "result should be 3"
+E       AssertionError: result should be 3
+E       assert 3 == 4
+E         +3
+E         -4
+
+test_assert1.py:7: AssertionError</failure></testcase><testcase classname="test_example" name="test_ok" time="0.001" /><testcase classname="test_example" name="test_fail" time="0.001"><failure message="assert 0">def test_fail():
+&gt;       assert 0
+E       assert 0
+
+test_example.py:15: AssertionError</failure></testcase><testcase classname="test_example" name="test_error" time="0.001"><error message="failed on setup with &quot;assert 0&quot;">@pytest.fixture
+    def error_fixture():
+&gt;       assert 0
+E       assert 0
+
+test_example.py:7: AssertionError</error></testcase><testcase classname="test_example" name="test_skip" time="0.001"><skipped message="skipping this test" type="pytest.skip">/Users/Albert_1/study_pytest/test_example.py:23: skipping this test</skipped></testcase><testcase classname="test_example" name="test_xfail" time="0.001"><skipped message="xfailing this test" type="pytest.xfail" /></testcase><testcase classname="test_example" name="test_xpass" time="0.001" /><testcase classname="test_node_name" name="test_aa" time="0.002" /><testcase classname="test_node_name" name="test_monke" time="0.001" /><testcase classname="test_node_name" name="test_log_message" time="0.001" /><testcase classname="test_param_exmaple" name="test_eval[3+5-8]" time="0.001" /><testcase classname="test_param_exmaple" name="test_eval[6*9-42]" time="0.001"><skipped message="" type="pytest.xfail" /></testcase></testsuite></testsuites>
