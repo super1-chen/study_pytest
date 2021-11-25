@@ -2,7 +2,7 @@ import pytest
 from sanic import Sanic
 from sanic import response
 
-@pytest.yield_fixture
+@pytest.fixture
 def app():
     app = Sanic("test_sanic_app")
 
