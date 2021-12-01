@@ -40,7 +40,8 @@ def test_mysql_peewee(user_fixture):
     user.email = "tccc123@163.com"
     user.join_date = datetime.datetime(2021, 11, 11, 00, 11, 11)
     user.save()
-    new_user = User.get_or_none(User.id == user.id)
+    
+    new_user = User.get_by_id(User.id == user.id)
     assert new_user.id == 1
     assert new_user.email == "tccc123@163.com"
 

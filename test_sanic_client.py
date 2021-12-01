@@ -3,10 +3,10 @@ from sanic import Sanic
 from sanic import response
 from sanic.websocket import WebSocketProtocol
 
+
 @pytest.fixture
 def app():
     app = Sanic("test_sanic_app", register=False)
-
     @app.route("/test_get", methods=['GET'])
     async def test_get(request):
         return response.json({"GET": True})
@@ -42,10 +42,15 @@ def app():
 
     return app
 
+# HTTP test cli
 @pytest.fixture
 def test_cli(loop, app, sanic_client):
-    return loop.run_until_complete(sanic_client(app, protocol=WebSocketProtocol))
+    return loop.run_until_complete(sanic_client(app))
 
+# web socket test cli
+@pytest.fixture
+def test_cli_ws(loop, app, sanic_client):
+    return loop.run_until_complete(sanic_client(app, scheme='ws', protocol=WebSocketProtocol))
 #########
 # Tests #
 #########
@@ -116,11 +121,11 @@ async def test_fixture_test_client_head(test_cli):
     # HEAD should not have body
     assert resp_body == ""
 
-async def test_fixture_test_client_ws(test_cli):
+async def test_fixture_test_client_ws(test_cli_ws):
     """
     Websockets
     """
-    ws_conn = await test_cli.ws_connect('/test_ws')
+    ws_conn = await test_cli_ws.ws_connect('/test_ws')
     data = 'hello world!'
     await ws_conn.send(data)
     msg = await ws_conn.recv()
